@@ -1,0 +1,172 @@
+.page-background {
+  background: transparent !important;
+}
+.content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.fullscreen-background {
+  background-image: url('/images/main.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover; /* ensures it stretches to cover the screen */
+  background-position: center center; /* centers the image */
+  background-attachment: fixed; /* optional: makes it stay on scroll */
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.container {
+    padding: 20px;
+}
+/* Navigation Styles */
+.navbar {
+    background-color: #0d6efd;
+    padding: 10px 0;
+}
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+}
+.nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+.nav-link:hover {
+    color: white !important;
+}
+/* Card Styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+}
+/* Table Styles */
+.table {
+    margin-top: 20px;
+}
+.table th {
+    background-color: #0d6efd;
+    color: white;
+}
+/* Button Styles */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+/* Form Styles */
+.form-control {
+    margin-bottom: 15px;
+}
+/* Modal Styles */
+.modal-content {
+    border-radius: 10px;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 15px;
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .form-container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+/* Ensure tables are responsive */
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+body {
+    font-family: 'Poppins', sans-serif;   
+}
+.auth-bg {
+    background-image: url('/images/main1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.login-bg {
+    background-image: url('/images/hospital-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.form-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+}
+.card-title {
+    font-weight: 600;
+    color: #0d6efd;
+}
+.btn-primary {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.table th {
+    background-color: #0d6efd;
+    color: white;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+/* Global styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  /* background-color: #f8f9fa; */
+  margin: 0;
+  padding: 0;
+}
+/* Content wrapper to ensure readability */
+.content-wrapper {
+  background: rgba(255,255,255,0.95);
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+/* Navbar styling */
+.navbar { z-index: 1000; }
+
+/* Typography */
+h2, h3, h4 {
+  font-weight: 600;
+  color: #0d6efd;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patients</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: url(/images/patient.jpg) no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .form-control {
+      border-radius: 15px;
+      box-shadow: none;
+    }
+
+    .btn-success {
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+    }
+
+    .btn-sm {
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+    }
+
+    .table {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .table th, .table td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .form-control {
+        margin-bottom: 10px;
+      }
+
+      .btn {
+        width: 100%;
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+  <!-- Page Content -->
+  <div class="container">
+    <h2>🧑‍⚕️ Patients</h2>
+
+    <!-- Patient Form -->
+    <form th:action="@{/patients}" method="post" th:object="${patient}">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <input type="text" th:field="*{name}" placeholder="Name" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <input type="email" th:field="*{email}" placeholder="Email" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <input type="tel" th:field="*{phone}" placeholder="Phone" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <input type="text" th:field="*{disease}" placeholder="Disease" class="form-control">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success"> Add Patient</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Patient Table -->
+    <div class="table-responsive mt-4">
+      <table class="table table-bordered table-hover align-middle bg-white">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Disease</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="pat : ${patients}">
+            <td th:text="${pat.id}">1</td>
+            <td th:text="${pat.name}">John</td>
+            <td th:text="${pat.email}">john@example.com</td>
+            <td th:text="${pat.phone}">1234567890</td>
+            <td th:text="${pat.disease}">Flu</td>
+            <td>
+              <a th:href="@{'/patients/edit/' + ${pat.id}}" class="btn btn-sm btn-primary">Edit</a>
+              <a th:href="@{'/patients/delete/' + ${pat.id}}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
