@@ -63,9 +63,11 @@ Now visit: [http://localhost:9090](http://localhost:9090)
 
 <img width="1915" height="994" alt="image" src="https://github.com/user-attachments/assets/e2efe84f-3a59-43e1-b20f-b5e2d00c0235" />
 
+
 ### 📝 Register
 
 <img width="1916" height="993" alt="image" src="https://github.com/user-attachments/assets/b5922a91-fb64-4f20-90b7-a9f323df1f17" />
+
 
 ### 📊 Dashboard
 
@@ -84,7 +86,7 @@ Now visit: [http://localhost:9090](http://localhost:9090)
 
 ### 📅 Appointments
 
-<img width="1912" height="1000" alt="image" src="https://github.com/user-attachments/assets/29ff7b5f-5985-490f-8bf0-eb0f304fe582" />
+<img width="1888" height="996" alt="image" src="https://github.com/user-attachments/assets/f205a4e1-1acb-4b8a-87ee-c5fa1f75734a" />
 
 
 ### 🗂️ Medical Records
