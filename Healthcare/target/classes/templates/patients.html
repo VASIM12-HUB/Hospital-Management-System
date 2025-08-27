@@ -5,63 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Patients</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: url(/images/patient.jpg) no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      min-height: 100vh;
     }
 
     .container {
-      background-color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      padding: 2rem;
-      margin-top: 2rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.9s ease-in-out;
     }
 
     h2 {
       text-align: center;
       margin-bottom: 30px;
       font-weight: 700;
+      color: #222;
     }
 
+    /* Form Styling */
     .form-control {
       border-radius: 15px;
-      box-shadow: none;
+      border: 1px solid #ccc;
+      padding: 0.6rem 1rem;
+      transition: all 0.3s;
+    }
+    .form-control:focus {
+      border-color: #43cea2;
+      box-shadow: 0 0 8px rgba(67,206,162,0.5);
     }
 
+    /* Buttons */
     .btn-success {
       border-radius: 30px;
-      padding: 0.5rem 1.5rem;
+      padding: 0.6rem 1.8rem;
       font-weight: 600;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-success:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
     .btn-sm {
       border-radius: 20px;
-      padding: 0.3rem 0.9rem;
+      padding: 0.35rem 1rem;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      border: none;
+    }
+    .btn-danger {
+      background: linear-gradient(135deg, #f85032, #e73827);
+      border: none;
+    }
+    .btn-primary:hover,
+    .btn-danger:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
     }
 
+    /* Table Styling */
     .table {
       border-radius: 15px;
       overflow: hidden;
     }
-
-    .table th, .table td {
-      vertical-align: middle;
+    .table th {
+      background: #185a9d;
+      color: white;
+      font-weight: 600;
+    }
+    .table td, .table th {
       text-align: center;
+      vertical-align: middle;
+    }
+    .table-hover tbody tr:hover {
+      background-color: rgba(67, 206, 162, 0.15);
+      transition: 0.3s;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
-      .form-control {
-        margin-bottom: 10px;
-      }
-
-      .btn {
-        width: 100%;
-        margin-top: 5px;
-      }
+      .form-control { margin-bottom: 10px; }
+      .btn { width: 100%; margin-top: 5px; }
     }
   </style>
 </head>
@@ -90,15 +133,15 @@
           <input type="text" th:field="*{disease}" placeholder="Disease" class="form-control">
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-success"> Add Patient</button>
+          <button type="submit" class="btn btn-success">➕ Add Patient</button>
         </div>
       </div>
     </form>
 
     <!-- Patient Table -->
-    <div class="table-responsive mt-4">
-      <table class="table table-bordered table-hover align-middle bg-white">
-        <thead class="table-light">
+    <div class="table-responsive mt-5">
+      <table class="table table-bordered table-hover bg-white">
+        <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -116,8 +159,8 @@
             <td th:text="${pat.phone}">1234567890</td>
             <td th:text="${pat.disease}">Flu</td>
             <td>
-              <a th:href="@{'/patients/edit/' + ${pat.id}}" class="btn btn-sm btn-primary">Edit</a>
-              <a th:href="@{'/patients/delete/' + ${pat.id}}" class="btn btn-sm btn-danger">Delete</a>
+              <a th:href="@{'/patients/edit/' + ${pat.id}}" class="btn btn-sm btn-primary">✏️ Edit</a>
+              <a th:href="@{'/patients/delete/' + ${pat.id}}" class="btn btn-sm btn-danger">🗑️ Delete</a>
             </td>
           </tr>
         </tbody>

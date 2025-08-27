@@ -1,34 +1,121 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .form-container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Floating background circles for effect */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+        body::before {
+            top: -100px;
+            left: -100px;
+        }
+        body::after {
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .card-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .card-container h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-container p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .btn-custom {
+            border-radius: 50px;
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: #00c6ff;
+            border: none;
+            color: #fff;
+        }
+        .btn-login:hover {
+            background: #0072ff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,114,255,0.4);
+        }
+
+        .btn-register {
+            background: #ff6a00;
+            border: none;
+            color: #fff;
+        }
+        .btn-register:hover {
+            background: #ee0979;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(238,9,121,0.4);
+        }
+
+        /* Animated icon */
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
-<body class="d-flex align-items-center min-vh-100 bg-light">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="text-center mb-4">
-                <h1 class="mb-3">🏥 Hospital Management System</h1>
-                <p class="lead">Secure access to medical services</p>
-            </div>
-            <div>
-               <a th:href="@{/login}" class="btn btn-primary w-100 mb-3">Login</a>
-<a th:href="@{/register}" class="btn btn-secondary w-100 mb-3">Register</a>
-
-            </div>
-        </div>
+<body>
+    <div class="card-container">
+        <div class="icon">🏥</div>
+        <h1>Hospital Management System</h1>
+        <p>Secure access to medical services</p>
+        <a th:href="@{/login}" class="btn btn-custom btn-login w-100 mb-3">Login</a>
+        <a th:href="@{/register}" class="btn btn-custom btn-register w-100">Register</a>
     </div>
-</div>
 </body>
 </html>

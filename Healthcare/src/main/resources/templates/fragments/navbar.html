@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-lg shadow" style="background: linear-gradient(90deg, #0d6efd, #6610f2);">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white fw-semibold fs-4" th:href="@{/dashboard}">🏥 HMS</a>
+    <style>
+        .navbar {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
 
-            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff !important;
+            transition: transform 0.3s ease;
+        }
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffd700 !important;
+        }
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 50%;
+            background-color: #ffd700;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .navbar-nav .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        .btn-logout {
+            border-radius: 30px;
+            font-weight: 600;
+            padding: 6px 18px;
+            transition: all 0.3s ease;
+            color: #fff;
+            border: 1.5px solid #fff;
+            background: transparent;
+        }
+        .btn-logout:hover {
+            background: #ffd700;
+            color: #000 !important;
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-4" th:href="@{/dashboard}">🏥 HMS</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -14,33 +84,33 @@
 
                     <!-- Everyone with dashboard access -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','DOCTOR','RECEPTIONIST','NURSE')">
-                        <a class="nav-link text-white" th:href="@{/dashboard}">Dashboard</a>
+                        <a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
                     </li>
 
                     <!-- Patients -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','DOCTOR','RECEPTIONIST')">
-                        <a class="nav-link text-white" th:href="@{/patients}">Patients</a>
+                        <a class="nav-link" th:href="@{/patients}">Patients</a>
                     </li>
 
                     <!-- Doctors -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','DEPARTMENT_MANAGER')">
-                        <a class="nav-link text-white" th:href="@{/doctors}">Doctors</a>
+                        <a class="nav-link" th:href="@{/doctors}">Doctors</a>
                     </li>
 
                     <!-- Appointments -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','DOCTOR','RECEPTIONIST','NURSE')">
-                        <a class="nav-link text-white" th:href="@{/appointments}">Appointments</a>
+                        <a class="nav-link" th:href="@{/appointments}">Appointments</a>
                     </li>
 
                     <!-- Medical Records -->
                     <li class="nav-item" sec:authorize="hasAnyAuthority('ADMIN','DOCTOR','NURSE')">
-                        <a class="nav-link text-white" th:href="@{/records}">Records</a>
+                        <a class="nav-link" th:href="@{/records}">Records</a>
                     </li>
                 </ul>
 
                 <!-- Logout button -->
                 <form th:action="@{/logout}" method="post" class="d-flex">
-                    <button class="btn btn-outline-light" type="submit">Logout</button>
+                    <button class="btn btn-logout" type="submit">Logout</button>
                 </form>
             </div>
         </div>
